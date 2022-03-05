@@ -78,7 +78,7 @@ class  save_data(models.Model):
     company_price=models.CharField(max_length=200,null=True,blank=True)
 
     def __str__(self):
-        return  self.first_name
+        return f"{self.name}"
 
 
 class Index(models.Model):
@@ -93,7 +93,3 @@ class Index(models.Model):
 
 class AdditionalInformation(models.Model):
     channel_id = models.IntegerField(null=True, blank=True)
-    kgforkub = models.IntegerField(null=True, blank=True)
-
-    def __str__(self):
-        return f"{self.kgforkub}"

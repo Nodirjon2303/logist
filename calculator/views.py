@@ -2,14 +2,18 @@ from django.shortcuts import render
 from .models import *
 import json
 from django.http import JsonResponse
-
+from django.contrib.auth import authenticate, login
+import requests
 import requests
 
 
 
 def CalculatorPageView(request):
     DATA=Country.objects.all()
-
+    if request.user.username == '':
+        user = authenticate(request, username='user', password='userpass')
+        if user:
+            login(request, user=user)
     return render(request=request,template_name='index.html', context={"country":DATA})
 def Calculator(request):
     if request.method == 'POST':
